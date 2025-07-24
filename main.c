@@ -8,6 +8,7 @@
  */
 int main(void)
 {
-	_printf(" Hello i am");
+	char c = 'h';
+	_printf("Hello i am %c %% %s",c, "musty");
 	return (0);
 }
