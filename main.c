@@ -9,6 +9,6 @@
 int main(void)
 {
 	char c = 'h';
-	_printf("Hello i am %c %% %s",c, "musty");
+	_printf("Hello i am %c %% %s %d %i",c, "musty", -1234, -1234);
 	return (0);
 }

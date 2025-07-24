@@ -15,8 +15,8 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, j = 0, b_i = 0;
-	char *buffer, *p;
+	int i = 0, j = 0, b_i = 0, to_str, len;
+	char *buffer, *p, *str;
 	char c;
 
 	va_start(ap, format);
@@ -59,7 +59,32 @@ int _printf(const char *format, ...)
 					buffer[b_i++] = '%';
 					i++;
 					break;
-
+				case 'd':
+					j = 0;
+					to_str = va_arg(ap, int);
+					str = to_string(to_str);
+					len = str_len(str);
+					buffer = realloc(buffer, sizeof(char) * (b_i + 1 + len));
+					while(str[j] != '\0')
+					{
+						buffer[b_i++] = str[j++];
+					}
+					i++;
+					free(str);
+					break;
+				case 'i':
+                                        j = 0;
+                                        to_str = va_arg(ap, int);
+                                        str = to_string(to_str);
+                                        len = str_len(str);
+                                        buffer = realloc(buffer, sizeof(char) * (b_i + 1 + len));
+                                        while(str[j] != '\0')
+                                        {
+                                                buffer[b_i++] = str[j++];
+                                        }
+                                        i++;
+                                        free(str);
+                                        break;
         	                default:
 					buffer[b_i++] = '%';
 					buffer[b_i++] = format[i];
